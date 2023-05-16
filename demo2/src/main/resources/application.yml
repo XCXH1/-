@@ -1,0 +1,34 @@
+# 服务器
+server:
+  # 设置端口号，默认8080
+  port: 8080
+spring:
+  datasource:
+    # 加载数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接数据库连接
+    url:  jdbc:mysql://localhost:3306/shixun?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    # 数据库用户名
+    username: root
+    # 数据库密码
+    password: 726640
+  thymeleaf:
+    # 路径前缀
+    prefix: classpath:/templates/
+    # 路径后缀
+    suffix: .html
+    # 关闭页面的缓存
+    cache: false
+    # 设置页面格式
+    encoding: utf-8
+    # 前端模板
+    mode: HTML
+  # 设置静态资源可以被访问
+  mvc:
+    static-path-pattern: /static/**
+mybatis:
+  # mybatis的映射地址
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.example.dome2.bean
+
+

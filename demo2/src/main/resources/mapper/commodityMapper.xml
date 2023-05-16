@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo2.mapper.CommodityMapper">
+    <insert id="add" parameterType="com.example.demo2.bean.Commodity">
+        insert into commodity values (null,#{commodity_name},#{commodity_price},#{commodity_img},#{commodity_status},#{commodity_num});
+    </insert>
+    <update id="updCommodity" parameterType="com.example.demo2.bean.Commodity">
+        update commodity set commodity_name=#{commodity_name},commodity_price=#{commodity_price},
+                             commodity_img=#{commodity_img},commodity_status=#{commodity_status},
+                             commodity_num=#{commodity_num}
+        where id=#{id};
+    </update>
+    <delete id="del" parameterType="int">
+        delete from commodity where id = #{id}
+    </delete>
+    <select id="commodityList" resultType="com.example.demo2.bean.Commodity">
+        select * from commodity;
+    </select>
+    <select id="getCommodityById" resultType="com.example.demo2.bean.Commodity" parameterType="int">
+        select * from commodity where id=${id};
+    </select>
+</mapper>

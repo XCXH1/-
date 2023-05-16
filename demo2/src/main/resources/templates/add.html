@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(function (){
+      $("#file").change(function (){
+        // $("form")[0].files[0]：标签选择器，选择第0个
+        var file = $("#file")[0].files[0];
+        var formdata = new FormData();
+        formdata.append("file",file);
+        $.ajax({
+          url:"http://localhost:8080/upload",
+          type:"post",
+          data:formdata,
+          processData: false,
+          /*请求头*/
+          contentType:false,
+          success:function (res){
+            // 将 res.img 的值设置为 <img> 标签的 src 属性值。
+            $("#img").attr("src",res.img);
+            /*$("#file1").value = res.img;*/
+            $("#img").attr("hidden",false);
+
+            $("#file1").val(res.img);
+          },error:function (res){
+
+          }
+        })
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-4 column">
+      </div>
+      <div class="col-md-4 column" style="margin-top: 1%">
+        <form role="form" action="http://localhost:8080/commodity/add" method="post">
+          <div class="form-group">
+            <label>商品名称</label>
+            <input type="text" class="form-control" name="commodity_name" id="commodity_name" />
+          </div>
+          <div class="form-group">
+            <label>商品价格</label>
+            <input type="text" name="commodity_price" class="form-control" id="commodity_price" />
+          </div>
+          <div class="form-group">
+            <label>商品图片</label>
+            <input type="file" id="file" />
+            <img src="" hidden="hidden" id="img" width="75px">
+            <input hidden="hidden" name="commodity_img" id="file1">
+            <p class="help-block">
+              Example block-level help text here.
+            </p>
+          </div>
+          <div class="form-group">
+            <label>商品状态</label>
+            <input type="radio" name="commodity_status" class="commodity_status" value="未上架" style="width: 20px;"/>未上架
+            <input type="radio" name="commodity_status" class="commodity_status" value="已上架" />已上架
+          </div>
+          <div class="form-group">
+            <label>库存数量</label>
+            <input type="number" name="commodity_num" class="form-control" id="commodity_num" />
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" />Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-4 column">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
