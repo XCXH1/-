@@ -1,0 +1,44 @@
+/* 设置页面背景颜色和字体 */
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* 设置大条目样式 */
+h2 {
+    margin: 20px 0 10px 0;
+    padding: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 设置下拉选项列表样式 */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 设置下拉选项列表显示效果 */
+ul.show {
+    display: block;
+}
+
+/* 设置下拉选项列表隐藏效果 */
+ul.hide {
+    display: none;
+}
+
+#list1.psa{
+    text-decoration: none;
+}
